@@ -134,17 +134,17 @@ export function CertificationsSection() {
 
         {/* Modal */}
         <Dialog open={!!selectedCert} onOpenChange={() => setSelectedCert(null)}>
-          <DialogContent className="max-w-2xl mx-4">
-            <DialogHeader>
-              <DialogTitle className="flex items-start gap-3 text-lg sm:text-xl font-playfair">
-                <div className="flex-shrink-0 mt-1">
+          <DialogContent className="max-w-sm sm:max-w-lg md:max-w-2xl mx-2 sm:mx-4 p-3 sm:p-6">
+            <DialogHeader className="pb-2 sm:pb-4">
+              <DialogTitle className="flex items-start gap-2 sm:gap-3 text-base sm:text-lg md:text-xl font-playfair pr-6 sm:pr-8">
+                <div className="flex-shrink-0 mt-0.5 sm:mt-1">
                   <CertificationIcon 
                     iconPath={selectedCert?.icon || ''} 
                     alt={`${selectedCert?.issuer} icon`}
-                    className="h-6 w-6 sm:h-8 sm:w-8"
+                    className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8"
                   />
                 </div>
-                <span className="text-left">{selectedCert?.title}</span>
+                <span className="text-left leading-tight">{selectedCert?.title}</span>
               </DialogTitle>
             </DialogHeader>
             {selectedCert && (
