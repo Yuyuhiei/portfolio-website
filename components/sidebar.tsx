@@ -38,14 +38,16 @@ export function Sidebar() {
   return (
     <>
       {/* Mobile menu button */}
-      <Button
-        variant="outline"
-        size="sm"
-        className="fixed top-4 left-4 z-50 lg:hidden interactive-element font-inconsolata"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-      </Button>
+      {!isOpen && (
+        <Button
+          variant="outline"
+          size="sm"
+          className="fixed top-4 left-4 z-50 lg:hidden interactive-element font-inconsolata"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <Menu className="h-4 w-4" />
+        </Button>
+      )}
 
       {/* Overlay */}
       {isOpen && (
@@ -62,8 +64,9 @@ export function Sidebar() {
         }`}
       >
         <div className="flex flex-col h-full p-4 sm:p-6">
-          {/* Personal Logo - Left aligned */}
-          <div className="mb-6 sm:mb-8">
+          {/* Header with Logo and Close Button */}
+          <div className="flex items-center justify-between mb-6 sm:mb-8">
+            {/* Personal Logo - Left aligned */}
             <div className="relative group cursor-pointer">
               <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-background/80 backdrop-blur-sm border border-border/50 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg group-hover:shadow-cyan-500/20">
                 <Image
@@ -77,6 +80,16 @@ export function Sidebar() {
               {/* Animated glow effect */}
               <div className="absolute inset-0 rounded-xl"></div>
             </div>
+            
+            {/* Close button - Only visible on mobile */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="lg:hidden p-2"
+              onClick={() => setIsOpen(false)}
+            >
+              <X className="h-4 w-4" />
+            </Button>
           </div>
 
           {/* Navigation - Now positioned at bottom with flex-1 and justify-end */}
